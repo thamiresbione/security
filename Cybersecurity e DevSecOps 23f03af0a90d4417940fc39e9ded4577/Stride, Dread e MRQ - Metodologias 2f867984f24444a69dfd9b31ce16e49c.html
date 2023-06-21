@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Stride, Dread e MRQ - Metodologias</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2f867984-f244-44a6-9dfd-9b31ce16e49c" class="page sans"><header><img class="page-cover-image" src="Stride,%20Dread%20e%20MRQ%20-%20Metodologias%202f867984f24444a69dfd9b31ce16e49c/Design-segundo-SAMM-Modelagem-de-Ameacas-em-Seguranca-de-Aplicacoes-1200x810.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/book_red.svg"/></div><h1 class="page-title">Stride, Dread e MRQ - Metodologias</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>Responsável</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiOwSmlC3282Q_sDMo5dfBdIqXDzU7l1ZckAKg76Q=s100" class="icon user-icon"/>Thamires Bione</span></td></tr><tr class="property-row property-row-verification"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesVerification"><path d="M3.86426 14.0459H5.32715C5.45475 14.0459 5.56185 14.0892 5.64844 14.1758L6.6875 15.2148C7.13411 15.6615 7.56934 15.8825 7.99316 15.8779C8.42155 15.8779 8.85677 15.6569 9.29883 15.2148L10.3379 14.1758C10.429 14.0892 10.5384 14.0459 10.666 14.0459H12.1221C12.751 14.0459 13.2158 13.8955 13.5166 13.5947C13.8219 13.2939 13.9746 12.8268 13.9746 12.1934V10.7305C13.9746 10.6029 14.0202 10.4958 14.1113 10.4092L15.1436 9.37012C15.5902 8.92806 15.8112 8.49284 15.8066 8.06445C15.8066 7.63607 15.5856 7.19857 15.1436 6.75195L14.1113 5.71289C14.0202 5.6263 13.9746 5.52148 13.9746 5.39844V3.92871C13.9746 3.30436 13.8242 2.83952 13.5234 2.53418C13.2227 2.22884 12.7555 2.07617 12.1221 2.07617H10.666C10.5384 2.07617 10.429 2.03288 10.3379 1.94629L9.29883 0.914062C8.85677 0.462891 8.42155 0.239583 7.99316 0.244141C7.56934 0.244141 7.13411 0.467448 6.6875 0.914062L5.64844 1.94629C5.56185 2.03288 5.45475 2.07617 5.32715 2.07617H3.86426C3.23535 2.07617 2.76823 2.22656 2.46289 2.52734C2.16211 2.82812 2.01172 3.29525 2.01172 3.92871V5.39844C2.01172 5.52148 1.96842 5.6263 1.88184 5.71289L0.849609 6.75195C0.402995 7.19857 0.179688 7.63607 0.179688 8.06445C0.179688 8.49284 0.402995 8.92806 0.849609 9.37012L1.88184 10.4092C1.96842 10.4958 2.01172 10.6029 2.01172 10.7305V12.1934C2.01172 12.8223 2.16211 13.2871 2.46289 13.5879C2.76823 13.8932 3.23535 14.0459 3.86426 14.0459ZM7.23438 11.4277C7.10221 11.4277 6.98372 11.4004 6.87891 11.3457C6.77409 11.291 6.67155 11.2021 6.57129 11.0791L4.89648 9.04199C4.83724 8.96452 4.79167 8.88477 4.75977 8.80273C4.72786 8.7207 4.71191 8.63639 4.71191 8.5498C4.71191 8.37663 4.77116 8.22852 4.88965 8.10547C5.0127 7.97786 5.16081 7.91406 5.33398 7.91406C5.44336 7.91406 5.54134 7.93685 5.62793 7.98242C5.71452 8.02799 5.80339 8.10775 5.89453 8.22168L7.20703 9.88965L10.0371 5.36426C10.1829 5.12728 10.3675 5.00879 10.5908 5.00879C10.7594 5.00879 10.9098 5.06348 11.042 5.17285C11.1787 5.28223 11.2471 5.42578 11.2471 5.60352C11.2471 5.68099 11.2288 5.76302 11.1924 5.84961C11.1559 5.93164 11.1149 6.00911 11.0693 6.08203L7.87012 11.0723C7.78809 11.1908 7.69238 11.2796 7.58301 11.3389C7.47819 11.3981 7.36198 11.4277 7.23438 11.4277Z"></path></svg></span>Verificação</th><td></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Tags</th><td><span class="selected-value select-value-color-brown">Guias e Processos</span><span class="selected-value select-value-color-orange">Infraestrutura</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Última edição</th><td><time>@21 de junho de 2023 12:58</time></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Classe</th><td><span class="selected-value select-value-color-red">Modelagem de Ameaças</span></td></tr><tr class="property-row property-row-file"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>Materials</th><td><span style="margin-right:6px"><a href="https://www.eccouncil.org/cybersecurity-exchange/threat-intelligence/dread-threat-modeling-intro/">https://www.eccouncil.org/cybersecurity-exchange/threat-intelligence/dread-threat-modeling-intro/</a></span></td></tr><tr class="property-row property-row-checkbox"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCheckbox"><path d="M3.85742 14.4561H12.1357C13.6123 14.4561 14.3779 13.6904 14.3779 12.2344V3.91504C14.3779 2.45215 13.6123 1.69336 12.1357 1.69336H3.85742C2.38086 1.69336 1.61523 2.45215 1.61523 3.91504V12.2344C1.61523 13.6973 2.38086 14.4561 3.85742 14.4561ZM3.93945 13.1162C3.30371 13.1162 2.95508 12.7812 2.95508 12.1182V4.02441C2.95508 3.36133 3.30371 3.0332 3.93945 3.0332H12.0537C12.6826 3.0332 13.0381 3.36133 13.0381 4.02441V12.1182C13.0381 12.7812 12.6826 13.1162 12.0537 13.1162H3.93945ZM7.26855 11.3115C7.51465 11.3115 7.72656 11.1885 7.87012 10.9697L10.9258 6.19141C11.0146 6.04785 11.0967 5.88379 11.0967 5.72656C11.0967 5.3916 10.7959 5.16602 10.4746 5.16602C10.2695 5.16602 10.085 5.27539 9.94141 5.50781L7.24121 9.8418L5.96973 8.22168C5.80566 8.00977 5.6416 7.93457 5.43652 7.93457C5.10156 7.93457 4.8418 8.20117 4.8418 8.54297C4.8418 8.70703 4.90332 8.85742 5.01953 9.00098L6.63281 10.9697C6.81738 11.209 7.01562 11.3115 7.26855 11.3115Z"></path></svg></span>Reviewed</th><td><div class="checkbox checkbox-off"></div></td></tr></tbody></table></header><div class="page-body"><p id="d2754751-2774-444f-9c90-6401265d0dc1" class="">
+</p><h1 id="afc7d48b-41c1-462c-b780-3021744c95c9" class="">Metodologias e Ferramentas</h1><h2 id="27db59a2-8889-4b5f-bd7e-33aa44780526" class="">STRIDE</h2><table id="a8996b3f-9e63-4410-9dc4-6a86e63b2ec1" class="simple-table"><tbody><tr id="6bff62ff-7d3f-4e58-89ea-abaf09a52f44"><td id="CPnC" class=""></td><td id="riKU" class=""><strong>AMEAÇA</strong></td><td id="scYk" class=""><strong>CONTROLE</strong></td><td id="uQ=M" class=""><strong>DESCRIÇÃO</strong></td></tr><tr id="4d766877-cac9-4462-a58d-6d5ebbb9eaa3"><td id="CPnC" class=""><strong>S</strong></td><td id="riKU" class="">Spoofing</td><td id="scYk" class="">Authentication</td><td id="uQ=M" class="">O atacante pretende se passar por alguém que não é.</td></tr><tr id="afb31b17-1701-4851-afa5-1692fd34c64e"><td id="CPnC" class=""><strong>T</strong></td><td id="riKU" class="">Tampering</td><td id="scYk" class="">Integrity</td><td id="uQ=M" class="">O atacante pretende modificar alguma informação (seja nos dados, nas configurações, etc)</td></tr><tr id="a3b07092-d8eb-4405-8ff7-43facfbf2cb3"><td id="CPnC" class=""><strong>R</strong></td><td id="riKU" class="">Repudiation</td><td id="scYk" class="">Non-Repudiation</td><td id="uQ=M" class="">O atacante pretende esconder todas as suas ações.</td></tr><tr id="fbd0089b-cd8f-4f61-8431-13db1ba55445"><td id="CPnC" class=""><strong>I</strong></td><td id="riKU" class="">Information Disclosure</td><td id="scYk" class="">Confidentiality</td><td id="uQ=M" class="">O atacante acaba por ter acesso às informações que não deveria.</td></tr><tr id="7ab2aa60-e031-4bbf-8077-97d65f13cd4c"><td id="CPnC" class=""><strong>D</strong></td><td id="riKU" class="">Denial of Service</td><td id="scYk" class="">Availability</td><td id="uQ=M" class="">O atacante pretende deixar o sistema fora do ar ou inoperante.</td></tr><tr id="c3b08ad3-a745-421f-a6da-8ba4bb4fc6c7"><td id="CPnC" class=""><strong>E</strong></td><td id="riKU" class="">Elevation of Privilege</td><td id="scYk" class="">Authorization</td><td id="uQ=M" class="">O atacante tenta realizar uma ação que não está habilitado a fazer.</td></tr><tr id="5610ed6e-184b-4648-b026-159157c87b5d"><td id="CPnC" class=""></td><td id="riKU" class=""></td><td id="scYk" class=""></td><td id="uQ=M" class=""></td></tr></tbody></table><h2 id="9cdb5514-a939-4d15-bce5-4a0dee1f034e" class="">DREAD</h2><table id="2e716f18-8e91-4331-81ac-da19752bd2ee" class="simple-table"><tbody><tr id="e33ffd13-3074-4239-a0b9-424a89499af8"><td id="qWb]" class=""><strong>CRITÉRIO</strong></td><td id="b~AI" class=""><strong>DESCRIÇÃO</strong></td></tr><tr id="a3ea3c84-6808-41ab-8bed-2f46f19e6f3d"><td id="qWb]" class="">Damage (dano)</td><td id="b~AI" class="">Qual o impacto se a vulnerabilidade for explorada com sucesso.</td></tr><tr id="60f5684f-e82c-4a69-8394-3ada4ef8b07a"><td id="qWb]" class="">Reproducibility (reprodutibilidade)</td><td id="b~AI" class="">O quão fácil é de um atacante conseguir realizar novamente o ataque.</td></tr><tr id="f3f50320-987d-4efc-b2d7-4f760c627f28"><td id="qWb]" class="">Exploitability (explorabilidade)</td><td id="b~AI" class="">Quanto tempo, esforço e expertise o atacante precisa ter para realizar o ataque.</td></tr><tr id="2dc28832-cdc1-4bc9-8e57-c48fdd015400"><td id="qWb]" class="">Affected Users (usuários afetados)</td><td id="b~AI" class="">Quantos usuários serão afetados pela vulnerabilidade e como.</td></tr><tr id="518178fe-0672-4e85-bd6a-ed08caa6d689"><td id="qWb]" class="">Discoverability (descoberta)</td><td id="b~AI" class="">O quão fácil é do atacante descobrir esta vulnerabilidade.</td></tr></tbody></table><p id="d58b677b-3c0d-481f-a99d-31282f524fc6" class="">Para cada critério, daremos uma nota de 0 a 10 e uma descrição. Primeiro, vamos entender como cada um é calculado:</p><blockquote id="567f8418-fe1e-4b6e-ab73-f91481ca8ffa" class="">Damage (dano)</blockquote><ul id="ce593bee-23b5-4a5d-b99d-c689ab34bb19" class="bulleted-list"><li style="list-style-type:disc">0: se não tivermos nenhum dano para ninguém.</li></ul><ul id="e1671e84-1532-4475-a5b3-ac8e70b1a36d" class="bulleted-list"><li style="list-style-type:disc">5: consigo acesso somente de leitura às informações do sistema que não sejam dados pessoais e sensíveis. Por exemplo, logs de erro, informações de tecnologia e negócio).</li></ul><ul id="4b119cfb-d926-4c1d-a90d-a840e1f72f82" class="bulleted-list"><li style="list-style-type:disc">8: consigo acesso às informações pessoais e sensíveis (como email ou telefone) dos usuários do sistema ou acesso de escrita em informações que não comprometem diretamente os usuários ou deixam o sistema inoperante.</li></ul><ul id="cf9d4e79-6ba1-4c72-ac34-3ed60d09cbcb" class="bulleted-list"><li style="list-style-type:disc">9: consigo comprometer dados das pessoas e/ou administração, alterando o sistema para que eu consiga acesso elevado, como gerenciar o painel de cadastro de produto ou roubar acessos de usuários.</li></ul><ul id="2acd00de-228a-4381-a42b-322284bf5526" class="bulleted-list"><li style="list-style-type:disc">10: compromete o sistema por inteiro, podendo excluir dados ou deixá-lo inoperante.</li></ul><p id="e414534f-ccc6-4e5d-962c-1eb06982c017" class="">A tabela de danos pode mudar de acordo com o negócio. Para algumas empresas, vazamentos de dados são mais críticos. Por exemplo, se você tem algum projeto super secreto e ele vazar, talvez não seja um dano de pontuação 5, mas sim de pontuação 9.</p><p id="1b35d1de-8c63-4907-92b7-64e571e15cf6" class="">
+</p><p id="ded09d5f-bd52-4cc9-90f4-c9ed010bfd8a" class="">Algumas pessoas não classificam os danos em pontos, somente em baixo, médio e alto. O importante é conseguir passar a visão do real impacto no seu sistema.</p><blockquote id="bcbae8bd-385d-4482-bd03-b8d0f0530036" class="">Reproducibility (reprodutibilidade)</blockquote><ul id="6266e589-ee04-4936-8e63-b6a05c4f70ea" class="bulleted-list"><li style="list-style-type:disc">0: muito difícil ou impossível.<ul id="35b7a76c-4231-4f8e-83cf-3b19ad34bf2a" class="bulleted-list"><li style="list-style-type:circle">Se tiver uma combinação de diversos fatores para conseguir algo como ter acesso à uma credencial vazada, depois ter que saber qual parte do sistema explorar e qual tipo de arquivo enviar.</li></ul><ul id="7786995c-1d0f-41ea-9b79-eca10847970c" class="bulleted-list"><li style="list-style-type:circle">Quando exigir do atacante três passos muito específicos ou mais, ou precisar de um acesso privilegiado, como estar na rede interna de uma rede de servidores, definimos que é muito difícil.</li></ul></li></ul><ul id="db8b8830-7f12-4374-9489-b38114b9a8c8" class="bulleted-list"><li style="list-style-type:disc">5: complexo.<ul id="fa0888b0-aace-41c0-a3eb-e4e938374316" class="bulleted-list"><li style="list-style-type:circle">Se o atacante precisar executar um ou dois passos muito específicos e somente através de testes manuais para chegar lá.</li></ul><ul id="cb9f02fa-a68a-43db-a371-3ad70ffb2fef" class="bulleted-list"><li style="list-style-type:circle">Um exemplo disso é um ataque precisar ter uma conta de usuário válida e passar por uma tela que tenha <em>captcha</em>.</li></ul></li></ul><ul id="b6e222d7-ad13-4cb7-8287-b0855ad9c545" class="bulleted-list"><li style="list-style-type:disc">7,5: fácil.<ul id="357ae154-5f96-432e-916a-a93671932f1f" class="bulleted-list"><li style="list-style-type:circle">Ele precisa executar alguns passos e estar atento. Mas qualquer pessoa com conhecimento relativo sobre segurança, conseguiria executar.</li></ul></li></ul><ul id="9e33c7d4-d5e7-44db-a529-ad2134d3e71a" class="bulleted-list"><li style="list-style-type:disc">10: muito fácil.<ul id="d02c5585-8022-488d-ade9-ea1173662a42" class="bulleted-list"><li style="list-style-type:circle">Qualquer ferramenta automatizada ou em alguns passos muito simples, como mudar um parâmetro na url, poderia indicar a vulnerabilidade.</li></ul></li></ul><blockquote id="b3843337-6064-4eed-a59b-17c3e77592bd" class="">Exploitability</blockquote><ul id="86eae1a0-3137-4c82-ada7-4473e164cd75" class="bulleted-list"><li style="list-style-type:disc">2,5: o atacante precisa de conhecimentos avançados de programação e/ou redes para encontrar a vulnerabilidade.</li></ul><ul id="00f749d1-9b06-49f3-8004-7b466d79ad08" class="bulleted-list"><li style="list-style-type:disc">5: o atacante precisa de conhecimentos básicos de programação, porém a detecção precisa ser manual.</li></ul><ul id="3b7cf041-f8f7-49c3-a959-9efcb77900a1" class="bulleted-list"><li style="list-style-type:disc">7,5: há ferramentas automatizadas que conseguem executar o ataque, uma vez identificada a vulnerabilidade, muitas vezes disponibilizadas por outros criminosos na internet.</li></ul><ul id="f5b4844d-73dc-4927-a1c8-b9caf8e2cba7" class="bulleted-list"><li style="list-style-type:disc">10: é possível explorar a falha sem uso de ferramentas mais avançadas, apenas vendo as requisições do browser e interagindo com os parâmetros é o suficiente ou usando alguma ferramenta de scan que pode tanto localizar quanto explorar a falha com poucas linhas de comando.</li></ul><blockquote id="33e2dae2-ed04-4e43-ac3a-bb034ebc7023" class="">Affected Users (usuários afetados)</blockquote><ul id="6911a43d-b9b7-4fe1-ad7a-8630aaa9faab" class="bulleted-list"><li style="list-style-type:disc">0: não há usuários afetados.</li></ul><ul id="5b11f9d7-9ef3-4877-8937-ea14abe109d9" class="bulleted-list"><li style="list-style-type:disc">2,5: afeta apenas um usuário do sistema.</li></ul><ul id="06ef7502-8daa-4121-ae2f-ebe2af2e9b06" class="bulleted-list"><li style="list-style-type:disc">6: afeta uma pequena quantidade de usuários, como 20% ou menos.</li></ul><ul id="b7cf3656-66b2-4faa-88ed-6062a95b4738" class="bulleted-list"><li style="list-style-type:disc">8: afeta usuários administradores.</li></ul><ul id="d7daa28f-0218-4e48-818b-ef408ee50a21" class="bulleted-list"><li style="list-style-type:disc">10: afeta todos os usuários do sistema.</li></ul><blockquote id="8a495f76-cfbd-4820-a2a7-e747fc496a38" class="">Discoverability (descoberta)</blockquote><ul id="41489366-0bb1-4085-8ce4-026746594277" class="bulleted-list"><li style="list-style-type:disc">0: muito difícil de descobrir.<ul id="1e5850ea-1859-4966-80a2-368492a547db" class="bulleted-list"><li style="list-style-type:circle">O atacante precisa ter acesso às técnicas e conhecimentos muito avançados. Por exemplo, ter que executar uma série de passos muito específicos dentro do sistema, como uma vulnerabilidade que aconteceria somente se comprasse um produto com cupom de desconto e fizesse uma entrega com frete grátis e pagamento com dois cartões de bandeiras diferentes.</li></ul></li></ul><ul id="01e5fa0b-9ea9-4866-8451-7195fc51b725" class="bulleted-list"><li style="list-style-type:disc">5: se o atacante tiver que combinar informações para conseguir identificar a possível vulnerabilidade, como, por exemplo, em uma parte do sistema obter uma mensagem de erro que diz qual a tecnologia usa no sistema e em outra parte achar uma vulnerabilidade usando esta tecnologia.</li></ul><ul id="72ce216a-7dd6-4c70-a8b7-5dfe62f14d20" class="bulleted-list"><li style="list-style-type:disc">10: se o atacante conseguir achar ela durante a navegação normal no sistema, como ir até à página do seu perfil com todas as informações e ver que na url está seu cpf, digitar o cpf de outra pessoa e obter os dados dela.</li></ul><p id="dbdccb73-b3bb-4e8c-83df-0374f59f2550" class="">
+</p><table id="85a5a264-32da-4794-97bb-a3e130f0274e" class="simple-table"><tbody><tr id="96e0e9d3-9b1b-497b-8686-8bdf7613924d"><td id="p_Ui" class=""><strong>Pontuação</strong></td><td id="=pad" class=""><strong>Severidade</strong></td></tr><tr id="28f33d1a-f600-4a2c-9072-eca0f0742365"><td id="p_Ui" class="">1-10: Baixa</td><td id="=pad" class="">Pequeno risco pode ser corrigido depois de algum tempo, como 60 ou 90 dias.</td></tr><tr id="22d0ec99-ae7b-426b-b725-52808a0af099"><td id="p_Ui" class="">11-24: Média</td><td id="=pad" class="">Risco moderado pode ser corrigido em até 15 ou 30 dias.</td></tr><tr id="318b8188-001e-49df-ab15-24f885a664e0"><td id="p_Ui" class="">25-39: Alta</td><td id="=pad" class="">Problemas sérios e devem ser corrigidos o mais cedo possível.</td></tr><tr id="b8692a24-8cab-4416-a5fd-adcf0e7efe38"><td id="p_Ui" class="">40-50: Crítico</td><td id="=pad" class="">Deve ser corrigido imediatamente.</td></tr></tbody></table><h2 id="57cfcee7-f5f0-49cf-aaac-e591d77cae4a" class="">Modelo de Risco Qualitativo</h2><h3 id="a80ad9be-5017-43cb-8330-431f71e8ba8a" class="">Interação </h3><p id="276c07f9-e643-462b-aefd-6d372e291245" class=""><strong>O atacante pode explorar essa vulnerabilidade remotamente?</strong></p><p id="76c206fc-50f9-475b-9023-accd6f8d51a8" class=""><strong>O atacante precisa estar autenticado?</strong></p><p id="82f79d4a-fa0f-4cdb-b2be-a9622ce23b39" class=""><strong>O ataque pode ser automatizado?</strong></p><h3 id="3448f6f9-c383-4d5f-978c-95f6b3b2c268" class="">Impacto</h3><p id="2c601e84-a871-409e-8f2e-fa760d6c3b64" class=""><strong>O atacante consegue tomar controle sobre os sistemas?</strong></p><p id="cfe27e79-4be9-4e91-89a0-17bc2d934930" class=""><strong>O atacante pode ter acesso administrador ao sistema?</strong></p><p id="ff8ed1e1-c139-4df2-a92a-3bfa28cdab9e" class=""><strong>O atacante pode derrubar o sistema?</strong></p><p id="6f9d78b5-c7d4-4339-b9ea-9ca36b99fb17" class=""><strong>O atacante pode obter dados sensíveis como segredos de aplicação ou dados das pessoas?</strong></p><h3 id="638a7810-4872-4db4-8442-7e05ab716ba8" class="">Mapas de Impacto</h3><p id="c9cda4ba-ae4e-4579-89a4-dc15d45ad5e8" class=""><strong>Quantos usuários são afetados?</strong></p><p id="d8c6603d-5329-4dc8-9070-cbf8fa63a023" class=""><strong>Quantas dependências externas são afetadas?</strong></p><p id="b3966d52-0da4-4abe-b45d-1da62251d428" class="">
+</p><ul id="5379852c-d559-4688-9f3c-7bfa9a19c223" class="bulleted-list"><li style="list-style-type:disc">Vazaram dados dos usuários ou sigilosos? Corrige agora.</li></ul><ul id="950a3aab-5908-4bf6-aee6-9176c1c08fb7" class="bulleted-list"><li style="list-style-type:disc">O atacante consegue acesso aos sistemas? Corrige agora.</li></ul><ul id="1f5fe7bc-ca5d-47be-add0-91c93a5c9317" class="bulleted-list"><li style="list-style-type:disc">O atacante consegue tirar os sistemas do ar? Corrige agora.</li></ul></div></article></body></html>
